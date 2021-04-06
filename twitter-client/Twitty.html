@@ -1,0 +1,20 @@
+<html>
+<button id="btnClick" onclick="onBtnClick()">Get Live Person Tweets</button>
+<pre id="results"/>
+</html>
+
+
+<script type="text/javascript">
+    function onBtnClick() {
+        console.log('Calling API');
+        fetch("http://localhost:3000/")
+            .then(response => response.json())
+            .then(data => displayResult(JSON.stringify(data)));
+    }
+
+    function displayResult(data) {
+        var ciResponseText = document.getElementById('results');
+        var obj = JSON.parse(data);
+        ciResponseText.innerHTML = JSON.stringify(obj, undefined, 2);
+    }
+</script>
